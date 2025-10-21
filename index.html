@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Barateiro — Materiais de Construção</title>
+  <meta name="description" content="Barateiro - Materiais de construção com entrega rápida e os melhores preços da região." />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --orange:#f47b20;
+      --blue:#0b4f8a; /* deep blue */
+      --blue-dark:#032f4f;
+      --yellow:#ffcc00;
+      --white:#ffffff;
+      --muted:#f6f3ee;
+      --text:#15232b;
+      --radius:12px;
+      --max-width:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      background:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* Container */
+    .container{
+      width:calc(100% - 32px);
+      max-width:var(--max-width);
+      margin:0 auto;
+    }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter: blur(4px);
+      z-index:40;
+      border-bottom:1px solid rgba(0,0,0,0.05);
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 16px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      font-weight:800;
+      font-size:26px;
+      color:var(--blue-dark);
+      letter-spacing:1px;
+    }
+    .logo small{ display:block; font-size:11px; color:var(--orange); margin-top:-4px; font-weight:700 }
+
+    nav{display:flex; gap:20px; align-items:center}
+    nav a{font-weight:600; color:var(--blue-dark); padding:8px 10px; border-radius:8px}
+    nav a.cta{
+      background:var(--yellow);
+      color:var(--blue-dark);
+      padding:10px 14px;
+      border-radius:10px;
+      box-shadow: 0 4px 10px rgba(4,32,63,0.08);
+    }
+
+    /* mobile nav */
+    .menu-toggle{display:none; background:none; border:0; padding:8px; cursor:pointer}
+    .menu-toggle .bar{display:block; width:22px; height:2px; background:var(--blue-dark); margin:4px 0; border-radius:2px}
+
+    /* Hero */
+    .hero{
+      margin-top:10px;
+      position:relative;
+      overflow:hidden;
+      border-radius:16px;
+      height:420px;
+      display:flex;
+      align-items:center;
+      min-height:380px;
+    }
+    /* diagonal split */
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(120deg, var(--orange) 0 52%, var(--blue) 52% 100%);
+      z-index:0;
+    }
+    .hero .container{
+      position:relative;
+      z-index:5;
+      display:flex;
+      align-items:center;
+      gap:26px;
+      height:100%;
+    }
+    .hero-left{
+      flex:1;
+      color:var(--white);
+      padding:36px;
+      max-width:640px;
+    }
+    .hero-left h1{
+      margin:0 0 10px 0;
+      font-size:36px;
+      line-height:1.02;
+      font-weight:800;
+      color:var(--white);
+      text-shadow: 0 2px 0 rgba(0,0,0,0.06);
+    }
+    .hero-left p{
+      margin:0 0 18px 0;
+      color: rgba(255,255,255,0.95);
+      font-weight:600;
+    }
+    .hero-ctas{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-block;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      border:0;
+    }
+    .btn-primary{
+      background:var(--yellow);
+      color:var(--blue-dark);
+      box-shadow: 0 8px 18px rgba(3,19,40,0.12);
+    }
+    .btn-secondary{
+      background:transparent;
+      color:var(--white);
+      border:2px solid rgba(255,255,255,0.18);
+    }
+
+    .hero-right{
+      flex:0 0 360px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding-right:36px;
+    }
+    .mascot-wrap{
+      width:320px;
+      transform:translateX(6%);
+      /* subtle shadow */
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,0.15));
+    }
+
+    /* Highlights section */
+    .highlights{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      background:var(--white);
+      border-radius:12px;
+      padding:20px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+      box-shadow: 0 8px 20px rgba(12,18,24,0.04);
+    }
+    .icon{
+      width:56px;
+      height:56px;
+      border-radius:10px;
+      background:linear-gradient(180deg, rgba(4,32,63,0.05), rgba(4,32,63,0.03));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      color:var(--orange);
+      font-size:22px;
+    }
+    .card h4{margin:0 0 6px 0; font-size:16px}
+    .card p{margin:0; color:rgba(10,20,30,0.6); font-size:14px}
+
+    /* Products */
+    .products{
+      margin-top:28px;
+    }
+    .products h3{margin:0 0 12px 0}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+    .product{
+      background:linear-gradient(180deg, #fff, #fff);
+      border-radius:12px;
+      padding:16px;
+      box-shadow: 0 8px 20px rgba(2,6,14,0.04);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-height:220px;
+    }
+    .product .thumb{
+      background:linear-gradient(180deg, rgba(11,79,138,0.04), rgba(244,123,32,0.03));
+      height:120px;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      color:var(--blue-dark);
+      font-size:18px;
+    }
+    .product h4{margin:0; font-size:16px}
+    .product p{margin:0; color:rgba(10,20,30,0.6); font-size:13px}
+    .product .actions{margin-top:auto; display:flex; gap:8px; align-items:center}
+    .chip{background:var(--orange); color:var(--white); padding:6px 10px; border-radius:999px; font-weight:700; font-size:13px}
+
+    /* Instagram / Dicas section */
+    .tips{
+      margin-top:28px;
+      border-radius:12px;
+      padding:26px;
+      display:flex;
+      gap:20px;
+      align-items:center;
+      background:linear-gradient(90deg,var(--blue) 0 45%, var(--blue) 45% 100%);
+      color:var(--white);
+      overflow:hidden;
+    }
+    .tips .left{flex:0 0 180px}
+    .tips h3{margin:0 0 6px 0; color:var(--white)}
+    .tips p{margin:0 0 10px 0; color:rgba(255,255,255,0.95)}
+    .tips .insta-btn{
+      background:var(--yellow);
+      color:var(--blue-dark);
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:800;
+      display:inline-block;
+    }
+
+    /* Contact / Footer */
+    footer{
+      margin-top:32px;
+      padding:32px 0;
+      background:transparent;
+      color:rgba(10,20,30,0.8);
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:20px;
+      align-items:start;
+    }
+    .contact-card{
+      background:var(--white);
+      border-radius:12px;
+      padding:18px;
+      box-shadow: 0 10px 30px rgba(2,6,14,0.04);
+    }
+    .small{font-size:13px; color:rgba(10,20,30,0.6)}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .highlights{grid-template-columns:repeat(2,1fr)}
+      .hero{height:auto; padding:28px 0}
+      .hero-right{flex:0 0 260px}
+    }
+    @media (max-width:700px){
+      nav{display:none}
+      .menu-toggle{display:block}
+      .topbar{padding:10px}
+      .container{width:calc(100% - 24px)}
+      .hero{flex-direction:column; align-items:stretch; min-height:480px}
+      .hero .container{flex-direction:column; align-items:flex-start; gap:10px}
+      .hero-left{padding:20px; order:2}
+      .hero-right{order:1; padding:14px; display:flex; justify-content:center}
+      .mascot-wrap{width:240px}
+      .highlights{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+    }
+
+    /* Mobile menu overlay */
+    .mobile-menu{
+      position:fixed;
+      inset:0;
+      display:none;
+      background:linear-gradient(180deg, rgba(3,19,40,0.9), rgba(3,19,40,0.95));
+      z-index:60;
+      padding:40px 20px;
+    }
+    .mobile-menu.open{display:block}
+    .mobile-menu nav{display:flex; flex-direction:column; gap:18px}
+    .mobile-menu a{color:var(--yellow); font-size:18px; font-weight:700}
+    .mobile-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:24px}
+    .close-menu{background:none; border:0; color:var(--yellow); font-weight:800; font-size:20px; cursor:pointer}
+
+    /* small helpers */
+    .muted{color:rgba(10,20,30,0.6)}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="topbar container">
+      <div class="brand">
+        <div class="logo">BARATEIRO <small>Materiais</small></div>
+        <div class="muted small">Preços baixos • Entrega rápida</div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#promocoes">Promoções</a>
+        <a href="#dicas">Dicas</a>
+        <a href="#contato" class="cta">Fazer Pedido</a>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-top container">
+      <div class="logo" style="color:var(--yellow)">BARATEIRO</div>
+      <button class="close-menu" id="closeMobile" aria-label="Fechar">X</button>
+    </div>
+    <nav class="container">
+      <a href="#home" onclick="closeMenu()">Home</a>
+      <a href="#produtos" onclick="closeMenu()">Produtos</a>
+      <a href="#promocoes" onclick="closeMenu()">Promoções</a>
+      <a href="#dicas" onclick="closeMenu()">Dicas</a>
+      <a href="#contato" onclick="closeMenu()">Fazer Pedido</a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home" aria-label="Seção principal">
+    <div class="container">
+      <div class="hero-left">
+        <h1>Entrega mais rápida da região!</h1>
+        <p>Materiais de construção com os melhores preços, atendimento próximo e entrega expressa.</p>
+
+        <div class="hero-ctas">
+          <a href="#produtos" class="btn btn-primary">Ver Produtos</a>
+          <a href="#contato" class="btn btn-secondary">Fazer Pedido</a>
+        </div>
+
+        <div style="margin-top:18px; display:flex; gap:10px; align-items:center;">
+          <div style="background:rgba(255,255,255,0.12); padding:8px 12px; border-radius:10px; font-weight:700; color:var(--white);">🚚 Entrega rápida</div>
+          <div style="background:rgba(255,255,255,0.08); padding:8px 12px; border-radius:10px; font-weight:600; color:var(--white)">💳 Pagamento na entrega</div>
+        </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="true">
+        <!-- Replace image path with your mascot image path -->
+        <img class="mascot-wrap" src="img/mascote.png" alt="Mascote Barateiro com chave inglesa">
+      </div>
+    </div>
+  </section>
+
+  <main class="container" style="padding-top:18px">
+
+    <!-- Highlights -->
+    <section class="highlights" aria-label="Destaques">
+      <div class="card">
+        <div class="icon">🏷️</div>
+        <div>
+          <h4>Preços imbatíveis</h4>
+          <p>Seleção diária de ofertas com os menores preços da região.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="icon">🚚</div>
+        <div>
+          <h4>Entrega rápida</h4>
+          <p>Logística própria para entregas ágeis e seguras.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="icon">🛠️</div>
+        <div>
+          <h4>Atendimento especializado</h4>
+          <p>Equipe pronta para orientar sobre materiais e aplicações.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Produtos / Categorias -->
+    <section class="products" id="produtos" aria-label="Produtos">
+      <h3>Categorias em destaque</h3>
+      <p class="small muted">Encontre o que precisa entre nossas categorias mais procuradas.</p>
+
+      <div class="grid" style="margin-top:14px">
+        <article class="product" role="article">
+          <div class="thumb">Cimento</div>
+          <h4>Cimento CP II - 50kg</h4>
+          <p class="small">Pronto para obras e reparos. Alta resistência e qualidade garantida.</p>
+          <div class="actions">
+            <span class="chip">R$ 29,90</span>
+            <div style="margin-left:auto">
+              <a class="btn btn-secondary" href="#contato">Pedir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product" role="article">
+          <div class="thumb">Tinta</div>
+          <h4>Tinta Acrílica 18L</h4>
+          <p class="small">Acabamento liso e ótima cobertura para áreas internas e externas.</p>
+          <div class="actions">
+            <span class="chip">R$ 149,90</span>
+            <div style="margin-left:auto">
+              <a class="btn btn-secondary" href="#contato">Pedir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product" role="article">
+          <div class="thumb">Elétrica</div>
+          <h4>Fios e Cabos</h4>
+          <p class="small">Fios com certificação, disponíveis em vários bitolas.</p>
+          <div class="actions">
+            <span class="chip">Consulte</span>
+            <div style="margin-left:auto">
+              <a class="btn btn-secondary" href="#contato">Pedir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product" role="article">
+          <div class="thumb">Hidráulica</div>
+          <h4>Conexões & Tubos</h4>
+          <p class="small">Peças de qualidade para instalações residenciais e comerciais.</p>
+          <div class="actions">
+            <span class="chip">Consulte</span>
+            <div style="margin-left:auto">
+              <a class="btn btn-secondary" href="#contato">Pedir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product" role="article">
+          <div class="thumb">Ferramentas</div>
+          <h4>Ferramentas manuais</h4>
+          <p class="small">Marretas, chaves, alicates e muito mais para profissionais.</p>
+          <div class="actions">
+            <span class="chip">R$ 24,90</span>
+            <div style="margin-left:auto">
+              <a class="btn btn-secondary" href="#contato">Pedir</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product" role="article">
+          <div class="thumb">Pisos</div>
+          <h4>Piso Cerâmico</h4>
+          <p class="small">Modelos versáteis para diferentes ambientes.</p>
+          <div class="actions">
+            <span class="chip">A partir de R$ 9,90/m²</span>
+            <div style="margin-left:auto">
+              <a class="btn btn-secondary" href="#contato">Pedir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Dicas / Instagram -->
+    <section class="tips" id="dicas" aria-label="Dicas e Instagram">
+      <div class="left">
+        <!-- small mascot thumbnail -->
+        <img src="img/instagram.png" alt="Mascote Barateiro" style="width:200px;border-radius:8px; box-shadow: 0 10px 20px rgba(2,6,14,0.08);">
+      </div>
+      <div style="flex:1">
+        <h3>Acompanhe as melhores dicas</h3>
+        <p>Passo a passo, combinações de materiais, e promoções exclusivas direto no nosso Instagram.</p>
+        <a class="insta-btn" href="#" aria-label="Seguir no Instagram">Seguir @barateiro</a>
+      </div>
+    </section>
+
+    <!-- Promoção pequena -->
+    <section style="margin-top:20px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;" id="promocoes">
+      <div style="background:var(--orange); color:#fff; padding:16px; border-radius:12px; font-weight:800; flex:1; min-width:220px;">
+        Promoção da semana: Caixas de parafusos com 25% de desconto!
+      </div>
+      <div style="background:var(--white); padding:12px; border-radius:12px; box-shadow: 0 8px 20px rgba(2,6,14,0.04); min-width:220px;">
+        <strong>Entrega grátis</strong> para pedidos acima de R$300 (ver condições).
+      </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer id="contato" aria-label="Contato">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="contact-card">
+            <h4>Fazer Pedido / Contato</h4>
+            <p class="small muted">Preencha o formulário ou nos chame no WhatsApp.</p>
+
+            <form style="margin-top:12px; display:grid; gap:10px;" onsubmit="event.preventDefault(); alert('Pedido enviado — personalize o envio do formulário para integrar ao backend.');">
+              <input type="text" name="nome" required placeholder="Nome" style="padding:10px; border-radius:8px; border:1px solid #e6e6e6">
+              <input type="tel" name="telefone" required placeholder="Telefone / WhatsApp" style="padding:10px; border-radius:8px; border:1px solid #e6e6e6">
+              <textarea name="pedido" placeholder="O que você precisa?" rows="3" style="padding:10px; border-radius:8px; border:1px solid #e6e6e6"></textarea>
+              <div style="display:flex; gap:8px;">
+                <button class="btn btn-primary" type="submit">Enviar Pedido</button>
+                <a class="btn btn-secondary" href="tel:+5511999999999" style="display:inline-flex;align-items:center">Ligar</a>
+              </div>
+            </form>
+
+            <div style="margin-top:12px" class="small muted">
+              <strong>Endereço:</strong> Rua Exemplo, 123 — Centro<br>
+              <strong>Horário:</strong> Seg-Sex 07:00–18:00 • Sáb 08:00–12:00
+            </div>
+          </div>
+
+          <div style="padding-left:6px">
+            <div style="background:var(--white); padding:14px; border-radius:12px; box-shadow: 0 8px 20px rgba(2,6,14,0.04);">
+              <h4>Redes Sociais</h4>
+              <p class="small muted">Siga nossas dicas, promoções e novidades.</p>
+
+              <div style="display:flex; gap:10px; margin-top:10px;">
+                <a href="#" style="background:var(--blue); color:var(--yellow); padding:8px 10px; border-radius:8px; font-weight:800">Instagram</a>
+                <a href="#" style="background:var(--orange); color:white; padding:8px 10px; border-radius:8px; font-weight:800">WhatsApp</a>
+              </div>
+            </div>
+
+            <div style="margin-top:16px; text-align:center; color:rgba(10,20,30,0.6); font-size:13px;">
+              <img src="img/logo.png" alt="Logotipo BARATEIRO" style="height:40px; object-fit:contain">
+              <div style="margin-top:8px">© <strong>Barateiro</strong> - Todos os direitos reservados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Mobile menu toggles
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMobile = document.getElementById('closeMobile');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+    });
+    closeMobile.addEventListener('click', () => closeMenu());
+    function closeMenu(){
+      mobileMenu.classList.remove('open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    }
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); closeMenu(); }
+      });
+    });
+  </script>
+</body>
+</html>
